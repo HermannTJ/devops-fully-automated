@@ -18,7 +18,7 @@ pipeline {
         stage('Git checkout') {
             steps {
                 echo 'Cloning the application code...'
-                git branch: 'main', url: 'https://github.com/mariusforreal/devops-fully-automated-1.git'
+                git branch: 'main', url: 'https://github.com/HermannTJ/devops-fully-automated.git'
 
             }
         }
@@ -62,27 +62,10 @@ pipeline {
         stage('SonarQube Scan') {
           steps {
             sh """mvn sonar:sonar \
-                      -Dsonar.projectKey=test \
-                      -Dsonar.host.url=http://100.26.122.217:9000 \
-                      -Dsonar.login=a9940a52bbdcfe00332b6018fa73447242e9a03f"""
-          }
-        }
-
-        stage('Upload to Artifactory to Nexus') {
-          steps {
-            sh "mvn clean deploy -DskipTests -s settings.xml -X"
-          }
-
-        }
-
-    stage('Deploy to DEV') {
-      environment {
-        HOSTS = "dev"
-      }
-      steps {
-        sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-      }
-
+                      -Dsonar.projectKey=sonar \
+                      -Dsonar.host.url=http://54.219.78.96:9000 \
+                      -Dsonar.login=def8e461a21bb7fcdd55f3e822c9008ff0e5b51e"""
+    }
     }
     stage('Approval for dev') {
       steps {
