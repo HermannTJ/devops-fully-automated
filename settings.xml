@@ -38,7 +38,7 @@ under the License.
     <mirror>
         <id>nexus</id>
         <name>nexus</name>
-        <url>http://172.31.5.15:8081/repository/maven-project/</url>
+        <url>http://172.31.13.109:8081/repository/maven-project/</url>
         <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
@@ -77,7 +77,7 @@ under the License.
        <repository>
          <id>nexus-release-repo</id>
          <name>maven_project</name>
-         <url>http://172.31.5.15:8081/repository/maven-snapshots/</url>
+         <url>http://172.31.13.109:8081/repository/maven-snapshots/</url>
        </repository>
      </repositories>
    </profile>
@@ -89,7 +89,7 @@ under the License.
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <sonar.host.url>http://172.31.1.182:9000</sonar.host.url>
+        <sonar.host.url>http://172.31.6.87:9000</sonar.host.url>
       </properties>
     </profile>
     <!--End SonarQube/Sonar Profile-->
